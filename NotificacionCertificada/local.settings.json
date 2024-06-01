@@ -1,0 +1,23 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=notificacioncertificada;AccountKey=WXAnTrBMrZDQrmg57yYS6+zr+4thzhwrbhGYm2CCXVcw7XRgLM/peQwdC6YaFLy+KMHfmXjU/WMw+AStgxcErQ==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "SqlConnectionString": "Server=tcp:eeaytvicjs.database.windows.net,1433;Initial Catalog=wsecurity2prod;Persist Security Info=False;User ID=darroyave@eeaytvicjs;Password=PP1QcZEUMECR;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+    "ColombiaRedUrl": "https://api.messaging-service.com",
+    "ColombiaRedToken": "U1ZBTElEQVJUMjAyMTpZM3diOG1lZ1AtS1pjaTNaYnZlTW5ud21ncV9lcnl4LVBEV1YzQWE2",
+    "ColombiaRedCallback": "https://notificacioncertificada2024.azurewebsites.net/api/ValidartCallbackOperador",
+    "UrlDownloadFile": "https://notificacioncertificada.z19.web.core.windows.net",
+    "ShortUrlService": "https://validartshortener.azurewebsites.net/api/Shorten",
+    "MailJetToken": "MTFkZWEwM2Y1YzAxMjM2NmRlOTc3NGNkMGI0NjE2ZTI6Y2I4MGMzNzQ1Mzk1NWQ4ZDIwYzZiZjQ4YjViZGU2MGM=",
+    "MailJetFrom": "notificaciones@validart.co",
+    "MailJetUrl": "https://api.mailjet.com/v3.1/send",
+    "UrlDisplay": "https://notificacioncertificada.z19.web.core.windows.net",
+    "AdminPasswordPDF": "NotificacionCertificada2024",
+    "Secret": "SfK9331jM4IJ64he5MQMFm0UOLrRXtZG",
+    "WEBSITE_TIME_ZONE": "SA Pacific Standard Time",
+    "ValidartURL": "https://validartbearertoken.azurewebsites.net/api/connect/token",
+    "ValidartClientId": "demo-serverless",
+    "ValidartClientSecret": "9MXF5dazsLsvYZ2XXDGrXva2pRjgqz9zWgcAnXKK"
+  }
+}

@@ -1,0 +1,134 @@
+﻿TESTING NETWORK
+
+1. Case: Phone number error prefix
+https://notificacioncertificada2024.azurewebsites.net/api/create
+
+{
+    "Messages": [
+        {
+            "ProductCode": "SMSCertificadoSimple",
+            "Content": "Prueba SMSCertificadoSimple Malo",
+            "Indicative": 57,
+            "PhoneNumber": "3996994381",
+            "NombreIniciador": "Iniciador",
+            "NombreDestinatario": "Destinatario",
+            "Subject": "Prueba prueba",
+            "EmailFrom": "dannover@icloud.com"
+        }
+    ],
+    "CallBack": "https://notificacioncertificada2024.azurewebsites.net/api/ValidartCallbackClientDummy"
+}
+
+2. Case: Phone number good
+https://notificacioncertificada2024.azurewebsites.net/api/create
+
+POST
+{
+    "Messages": [
+        {
+            "ProductCode": "SMSCertificadoSimple",
+            "Content": "Prueba SMSCertificadoSimple Malo",
+            "Indicative": 57,
+            "PhoneNumber": "3176994381",
+            "NombreIniciador": "Iniciador",
+            "NombreDestinatario": "Destinatario"
+        }
+    ],
+    "CallBack": "https://notificacioncertificada2024.azurewebsites.net/api/ValidartCallbackClientDummy"
+}
+
+{
+    "results":[
+        {
+            "price": {
+                "pricePerMessage":5.000000,
+                "currency":"COP"
+             },
+             "status":{
+                "id":5,
+                "groupId":3,
+                "groupName":"DELIVERED",
+                "name":"DELIVERED_TO_HANDSET",
+                "description":"Message delivered to handset"
+             },
+             "error":{
+                "id":0,
+                "name":"NO_ERROR",
+                "description":"No Error",
+                "groupId":0,
+                "groupName":"OK",
+                "permanent":false
+             },
+             "messageId":"40745239778503536852",
+             "doneAt":"2024-01-30T23:23:45.667-0500",
+             "smsCount":1,
+             "sentAt":"2024-01-30T23:23:38.884-0500",
+             "to":"573176994381"
+      }
+  ]
+}
+
+3. https://notificacioncertificada2024.azurewebsites.net/api/create
+
+POST
+{
+    "Messages": [
+        {
+            "ProductCode": "SMSCertificadoURL",
+            "Content": "Prueba SMSCertificadoURL Good",
+            "Indicative": 57,
+            "PhoneNumber": "3176994381",
+            "UrlDoc": "https://validart2storage.blob.core.windows.net/test/pdf_adjunto.pdf",
+            "NombreIniciador": "Iniciador",
+            "NombreDestinatario": "Destinatario"
+        }
+    ],
+    "CallBack": "https://notificacioncertificada2024.azurewebsites.net/api/ValidartCallbackClientDummy"
+}
+
+https://notificacioncertificada.z19.web.core.windows.net
+
+{
+    "Messages": [
+        {
+            "ProductCode": "EmailCertificadoSimple",
+            "Content": "Prueba EmailCertificadoSimple Prueba 001",
+            "Subject": "Prueba prueba",
+            "Email": "dannover@gmail.com",
+            "NameFrom": "ValidarT Apple",
+            "NameTo": "Dannover A.",
+            "EmailFrom": "dannover@icloud.com"
+        }
+    ],
+    "CallBack": "https://notificacioncertificada2024.azurewebsites.net/api/ValidartCallbackClientDummy"
+}
+
+{
+    "event":"sent",
+    "time":1707421307,
+    "MessageID":288230398347822303,
+    "Message_GUID":"84c0c022-312d-4999-8d91-eeaa6fef6a91",
+    "email":"soporte@validart.co",
+    "mj_campaign_id":0,
+    "mj_contact_id":8207579826,
+    "customcampaign":"",
+    "smtp_reply":"250 2.0.0 OK  1707421307 d11-20020a5d4f8b000000b0033b04725760si20945wru.582 - gsmtp",
+    "CustomID":"AppGettingStartedTest"
+   }
+
+https://notificacioncertificada2024.azurewebsites.net/api/create
+
+{
+    "Messages": [
+        {
+            "ProductCode": "EmailCertificadoSimple",
+            "Content": "Prueba EmailCertificadoSimple Toma 003",
+            "Subject": "Prueba prueba",
+            "Email": "dannover@gmail.com",
+            "NameFrom": "ValidarT Apple",
+            "NameTo": "Dannover A.",
+            "EmailFrom": "dannover@icloud.com"
+        }
+    ],
+    "CallBack": "https://notificacioncertificada2024.azurewebsites.net/api/ValidartCallbackClientDummy"
+}
