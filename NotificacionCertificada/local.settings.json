@@ -2,22 +2,6 @@
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "SqlConnectionString": "",
-    "ColombiaRedUrl": "https://api.messaging-service.com",
-    "ColombiaRedToken": "",
-    "ColombiaRedCallback": "https://notificacioncertificada2024.azurewebsites.net/api/ValidartCallbackOperador",
-    "UrlDownloadFile": "https://notificacioncertificada.z19.web.core.windows.net",
-    "ShortUrlService": "https://validartshortener.azurewebsites.net/api/Shorten",
-    "MailJetToken": "=",
-    "MailJetFrom": "notificaciones@validart.co",
-    "MailJetUrl": "https://api.mailjet.com/v3.1/send",
-    "UrlDisplay": "https://notificacioncertificada.z19.web.core.windows.net",
-    "AdminPasswordPDF": "NotificacionCertificada2024",
-    "Secret": "",
-    "WEBSITE_TIME_ZONE": "SA Pacific Standard Time",
-    "ValidartURL": "https://validartbearertoken.azurewebsites.net/api/connect/token",
-    "ValidartClientId": "demo-serverless",
-    "ValidartClientSecret": ""
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
   }
 }
