@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Developer\net\NotificacionCertificada\NotificacionCertificada.Web\bin\Release\net8.0\browser-wasm\publish\</_PublishTargetUrl>
+    <History>True|2024-02-16T14:55:35.6682105Z;True|2024-02-15T16:57:04.9327335-05:00;True|2024-02-15T15:38:45.8746437-05:00;True|2024-02-15T12:13:49.8865655-05:00;True|2024-02-15T11:46:01.6513843-05:00;True|2024-02-15T11:40:04.3304172-05:00;True|2024-02-15T10:44:56.9521753-05:00;True|2024-02-08T09:24:46.3311760-05:00;True|2024-02-06T18:18:16.3116222-05:00;True|2024-02-06T18:08:33.7659534-05:00;True|2024-02-04T19:19:06.2956251-05:00;True|2024-02-04T19:12:18.0234344-05:00;True|2024-02-04T19:04:46.1464196-05:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

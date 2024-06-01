@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notificación Certificada</title>
+    <base href="/" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" href="data:,">
+    <!-- If you add any scoped CSS files, uncomment the following to load them
+    <link href="NotificacionCertificada.Web.styles.css" rel="stylesheet" /> -->
+    <script>
+
+        window.BlazorDownloadFile = (filename, data) => {
+            const blob = base64toBlob(data);
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        function base64toBlob(base64Data, contentType = 'application/octet-stream') {
+            const byteCharacters = atob(base64Data);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            return new Blob([byteArray], { type: contentType });
+        }
+
+        window.getUserAgent = function () {
+            return navigator.userAgent;
+        }
+
+        window.getIPAddress = function () {
+            return new Promise((resolve, reject) => {
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => resolve(data.ip))
+                    .catch(error => reject(error));
+            });
+        }
+
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #9a2757;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        table {
+            margin: 50px auto;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #5ba06f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

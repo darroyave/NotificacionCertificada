@@ -1,0 +1,119 @@
+﻿@page "/"
+
+@inject NavigationManager MyNavigationManager
+@inject IJSRuntime JSRuntime
+
+@inject HttpClient HttpClient
+
+<header>
+    <h1>Notificación Electrónica SMS Certificado</h1>
+</header>
+
+<table>
+    @if (webModel != null)
+    {
+        <tr>
+            <td>Asunto del Mensaje</td>
+        </tr>
+        <tr>
+            <td>@webModel.Content</td>
+        </tr>
+    
+        @if (!string.IsNullOrEmpty(webModel.UrlDoc) && webModel.ProductCode == ProductCertificado.EmailUrl)
+        {
+            <tr>
+                <td>
+                    <embed src="@webModel.UrlDoc" visible="false" width="1100" height="730" type="application/pdf" />
+                </td>
+            </tr>
+        }
+        else if (!string.IsNullOrEmpty(webModel.UrlDoc) && webModel.ProductCode == ProductCertificado.SMSUrl)
+        {
+            <tr>
+                <td>
+                    <button @onclick="DownloadClick" class="btn">
+                        Descargar adjunto aquí
+                    </button>
+                </td>
+            </tr>
+        }
+   
+    }
+    else
+    {
+        <tr>
+            <td>No Code</td>
+        </tr>
+    }
+</table>
+
+@code {
+
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public Guid CodeClient { get; set; }
+
+    private WebModel? webModel;
+
+    private string? UserAgent { get; set; }
+    private string? IPAddress { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        UserAgent = await JSRuntime.InvokeAsync<string>("getUserAgent");
+        IPAddress = await JSRuntime.InvokeAsync<string>("getIPAddress");
+
+        if (CodeClient != Guid.Empty)
+        {
+            var response = await HttpClient.GetAsync($"/api/web/{CodeClient}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+
+                webModel = JsonConvert.DeserializeObject<WebModel>(result);
+            }
+        }
+    }
+
+    private async Task DownloadClick(MouseEventArgs e)
+    {
+        if (webModel!.ProductCode.Equals(ProductCertificado.SMSUrl) && !webModel!.Visualizado)
+        {
+            var model = new WebCreateViewModel()
+                {
+                    IpRecibido = IPAddress,
+                    NavegadorRecibido = UserAgent
+                };
+
+            // Convertir el objeto a formato JSON
+            var json = JsonConvert.SerializeObject(model);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Enviar data
+            await HttpClient.PostAsync($"/api/web/{CodeClient}", data);
+        }
+
+        // Download File
+        var responseDownload = await HttpClient.GetAsync(webModel!.UrlDoc);
+
+        if (responseDownload.IsSuccessStatusCode)
+        {
+            var content = await responseDownload.Content.ReadAsStreamAsync();
+
+            string[] urlSplit = webModel.UrlDoc!.Split('/');
+
+            string fileName = urlSplit[^1];
+
+            var contentStr = await content.ReadFully();
+
+            // Trigger file download
+            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", 
+                fileName,
+                Convert.ToBase64String(contentStr)
+            );
+
+        }
+
+    }
+}
